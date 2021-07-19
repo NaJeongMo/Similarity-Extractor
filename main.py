@@ -76,7 +76,7 @@ if torch.cuda.is_available() and args.gpu >= 0:
 vr = vr.VocalRemover(model, device, args.wsize)
 print('done')
 print()
-inputname = os.path.splitext(os.path.basename(args.args.input[0]))[0]
+inputname = os.path.splitext(os.path.basename(args.input[0]))[0]
 
 for i in range(2):
     if i == 0:
