@@ -36,9 +36,9 @@ def crop(a,b, isMono=False):
     else:
         return a[:l,:l], b[:l,:l]
 def normalise(wave):
-    distance = 1 - max(abs(wave))
-    if max(abs(wave)) > 1:
-        distance * -1
+    distance = 1 - max(abs(wave[0]))
+    if max(abs(wave[0])) > 1:
+        distance *= -1
         distance += wave
         return distance * -1
     else:
@@ -134,13 +134,9 @@ sf.write(os.path.join(saveFolder,'{}_similarity.wav').format(inputname), wave.T,
 if args.difference:
     wave,wave1=crop(wave,wave1)
     wave1,wave2=crop(wave1,wave2)
-    
-    
-    
     diff1 = normalise(wave) - normalise(wave1)
     diff2 = normalise(wave) - normalise(wave2)
     sf.write(os.path.join(saveFolder,'{}_difference_1.wav').format(inputname), diff1.T, args.sr)
     sf.write(os.path.join(saveFolder,'{}_difference_2.wav').format(inputname), diff2.T, args.sr)
 print('Complete!')
 print('Total time: {0:.{1}f}s'.format(time.time() - start_time, 1))
-
