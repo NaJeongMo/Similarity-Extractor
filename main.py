@@ -36,9 +36,11 @@ def crop(a,b, isMono=False):
     else:
         return a[:l,:l], b[:l,:l]
 def normalise(wave):
-    distance = 1 - max(abs(wave[0]))
-    distance += wave
-    return distance
+    if max(abs(wave[0])) >= max(abs(wave[1])):
+        wave *= 1/max(abs(wave[0]))
+    elif max(abs(wave[0])) <= max(abs(wave[1])):
+        wave *= 1/max(abs(wave[1]))
+    return wave
 p = argparse.ArgumentParser()
 p.add_argument('--gpu', type=int, default=-1)
 p.add_argument('--input', nargs='+', default=[])
