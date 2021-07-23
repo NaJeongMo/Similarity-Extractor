@@ -67,7 +67,7 @@ L2 = wave2[0]
 R1 = wave1[1]
 R2 = wave2[1]
 L = normalise(np.asfortranarray([L1,L2], np.float32))
-R = normalise(np.asfortranarray([R1,R2], np.float32)
+R = normalise(np.asfortranarray([R1,R2], np.float32))
 print('done')
 if args.difference == False:
     del wave1, wave2
